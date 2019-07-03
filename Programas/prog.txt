@@ -1,0 +1,17 @@
+//Exempo1
+//Circle
+canvas()
+  circle<2> a;
+  circle<3,blue> b;
+  circle<2,4,4> c;
+
+  print a | b | c;
+
+  print a.fill(red);
+
+  print b.fill(black);
+
+  print c.fill(green, red);
+
+  print a.translate(0,4);
+endcanvas

@@ -1,0 +1,49 @@
+// templates
+
+module(stat) ::= <<
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usepackage{rotating}
+\begin{document}
+  <stats(stat)>
+\end{document}
+
+>>
+
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+canvas(scale, stat) ::= <<
+\begin{tikzpicture}[scale=<scale>]
+  <stats(stat)>
+\end{tikzpicture}
+>>
+
+loop(ct, list, stat) ::= <<
+\foreach \\<ct> in <list>{
+  <stats(stat)>
+}
+>>
+
+print(stat) ::= <<
+<stats(stat)>
+>>
+
+rotate(stat,angle) ::= <<
+\begin{turn}{<angle>}
+  <stats(stat)>
+\end{turn}
+>>
+
+add(stat) ::= <<
+<stats(stat)>
+>>
+
+square(l,xpos,ypos,stroke) ::= "\draw[<stroke>] (<xpos>,<ypos>) rectangle(<l>+<xpos>,<l>+<ypos>);"
+squareFill(l,xpos,ypos,fill,stroke) ::= "\filldraw[fill=<fill>, draw=<stroke>] (<xpos>,<ypos>) rectangle(<l>+<xpos>,<l>+<ypos>);"
+rectangle(c,l,xpos,ypos,stroke) ::= "\draw[<stroke>] (<xpos>,<ypos>) rectangle(<c>+<xpos>,<l>+<ypos>);"
+rectangleFill(c,l,xpos,ypos,fill,stroke) ::= "\filldraw[fill=<fill>, draw=<stroke>] (<xpos>,<ypos>) rectangle(<c>+<xpos>,<l>+<ypos>);"
+circle(r,xpos,ypos,stroke) ::= "\draw[<stroke>] (<xpos>,<ypos>) circle(<r>);"
+circleFill(r,xpos,ypos,fill,stroke) ::= "\filldraw[fill=<fill>, draw=<stroke>] (<xpos>,<ypos>) circle(<r>);"
+line(xstart,ystart,xend,yend,stroke) ::= "\draw[<stroke>] (<xstart>,<ystart>) to (<xend>,<yend>);"

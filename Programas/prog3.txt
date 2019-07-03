@@ -1,0 +1,10 @@
+//Exemplo 3
+canvas()
+  circle<2> a;
+  rect<5,10,blue> b;
+  square<10,5,5> c;
+  print b;
+  print a | rotate(45) | b | rotate(2) | c;
+  print a.translate(1,1);
+  print a.fill(red);
+endcanvas

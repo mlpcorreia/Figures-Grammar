@@ -1,0 +1,21 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usepackage{rotating}
+\begin{document}
+  \begin{tikzpicture}[scale=1]
+    \draw[black] (0,0) rectangle(10+0,10+0);
+    \draw[black] (0,0) rectangle(5+0,10+0);
+    \draw[black] (20,20) circle(4);
+    \draw[black] (16,20) to (24,20);
+    \draw[red] (10,10) to (20,20);
+    \begin{turn}{45}
+      \draw[red] (10,10) to (20,20);
+    \end{turn}
+    \begin{turn}{90}
+      \draw[red] (10,10) to (20,20);
+    \end{turn}
+    \foreach \z in {red, green}{
+      \filldraw[fill=red, draw=black] (0,0) rectangle(10+0,10+0);
+    }
+  \end{tikzpicture}
+\end{document}

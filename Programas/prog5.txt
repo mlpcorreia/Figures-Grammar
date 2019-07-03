@@ -1,0 +1,17 @@
+canvas()
+
+  square<10> a;
+  rect<5,10> b;
+  circle<4,20,20> c;
+  line<16,20,24,20> e;
+  line<10,10,20,20,red> f;
+
+  print a | b | c | e | f;
+
+  rotate(45) | f;
+  rotate(90) | f;
+
+  loop(z,red,green)
+    print a.fill(red);
+  endloop;
+endcanvas

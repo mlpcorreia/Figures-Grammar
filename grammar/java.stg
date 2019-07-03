@@ -1,0 +1,44 @@
+// templates java
+
+module(name,stat) ::= <<
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.*;
+
+public class <name> extends JPanel {
+
+  public <name>(){}
+  <stats(stat)>
+}
+
+>>
+
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+print(stat) ::= <<
+<stats(stat)>
+>>
+
+rotate(stat, angle, xpos, ypos) ::= <<
+AffineTransform old = g2d.getTransform();
+g2d.rotate(<angle>,<xpos>,<ypos>);
+<stats(stat)>
+g2d.setTransform(old);
+>>
+
+stroke(size) ::= <<
+g2d.setStroke(new BasicStroke(<size>));
+>>
+
+setcolor(color) ::= <<
+g2d.setColor(Color.<color>);
+>>
+
+square(l,xpos,ypos) ::= "g2d.drawRect(<xpos>,<ypos>,<l>,<l>);"
+squareFill(l,xpos,ypos) ::= "g2d.fillRect(<xpos>,<ypos>,<l>,<l>);"
+rectangle(c,l,xpos,ypos) ::= "g2d.drawRect(<xpos>,<ypos>,<c>,<l>);"
+rectangleFill(c,l,xpos,ypos) ::= "g2d.fillRect(<xpos>,<ypos>,<c>,<l>);"
+circle(r,xpos,ypos) ::= "g2d.drawOval(<xpos>,<ypos>,<r>,<r>);"
+circleFill(r,xpos,ypos) ::= "g2d.fillOval(<xpos>,<ypos>,<r>,<r>);"

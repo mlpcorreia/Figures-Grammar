@@ -1,0 +1,10 @@
+canvas(2) 
+  square<5, 20, 20> a;
+  rect<5,10,10,10,red> b;
+  print a;
+  print b;
+
+  loop(2)
+    print b;
+  endloop;
+endcanvas
